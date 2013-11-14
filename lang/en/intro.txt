@@ -1,0 +1,3 @@
+====== Automatic Log-Off Configuration ======
+
+Here you can specify users and groups that should be logged out after the configured time of inactivity. Be sure to prefix groups with ''@''. A user that is member of multiple configured groups will be given the largest configured time. You can specify ''0'' to disable auto-loggoff for certain groups or users.

@@ -10,12 +10,19 @@
 if(!defined('DOKU_INC')) die();
 
 class admin_plugin_autologoff extends DokuWiki_Admin_Plugin {
+    /** @var  helper_plugin_autologoff */
+    private $helper;
+
+    public function __construct(){
+        $this->helper = $this->loadHelper('autologoff');
+    }
+
 
     /**
      * @return int sort number in admin menu
      */
     public function getMenuSort() {
-        return FIXME;
+        return 500;
     }
 
     /**
@@ -29,13 +36,61 @@ class admin_plugin_autologoff extends DokuWiki_Admin_Plugin {
      * Should carry out any processing required by the plugin.
      */
     public function handle() {
+        if(isset($_REQUEST['remove'])){
+            $this->helper->remove_entry($_REQUEST['remove']);
+        }
+
+        if(isset($_REQUEST['usergroup'])){
+            $this->helper->add_entry($_REQUEST['usergroup'], $_REQUEST['time']);
+        }
+
+
     }
 
     /**
      * Render HTML output, e.g. helpful text and a form
      */
     public function html() {
-        ptln('<h1>'.$this->getLang('menu').'</h1>');
+        echo $this->locale_xhtml('intro');
+
+        $config = $this->helper->load_config();
+
+        echo '<form action="'.script().'" method="post">';
+        echo '<input type="hidden" name="do" value="admin" />';
+        echo '<input type="hidden" name="page" value="autologoff" />';
+
+        echo '<table class="inline">';
+        echo '<tr>';
+        echo '<th>'.$this->getLang('usergroup').'</th>';
+        echo '<th>'.$this->getLang('time').'</th>';
+        echo '<th></th>';
+        echo '</tr>';
+
+        foreach($config as $usergroup => $time){
+
+            $url = wl('',array(
+                              'do' => 'admin',
+                              'page' => 'autologoff',
+                              'remove' => $usergroup
+                         ));
+
+            echo '<tr>';
+            echo '<td>'.hsc($usergroup).'</td>';
+            echo '<td>'.hsc($time).'</td>';
+            echo '<td><a href="'.$url.'">'.$this->getLang('remove').'</a></td>';
+            echo '</tr>';
+        }
+
+        echo '<tr>';
+        echo '<td><input type="text" name="usergroup" class="edit" /></td>';
+        echo '<td><input type="text" name="time" class="edit" /></td>';
+        echo '<td><input type="submit" class="button" value="'.$this->getLang('save').'" /></td>';
+        echo '</tr>';
+
+
+        echo '</table>';
+        echo '</form>';
+
     }
 }
 

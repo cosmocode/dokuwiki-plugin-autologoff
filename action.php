@@ -10,6 +10,12 @@
 if(!defined('DOKU_INC')) die();
 
 class action_plugin_autologoff extends DokuWiki_Action_Plugin {
+    /** @var  helper_plugin_autologoff */
+    private $helper;
+
+    public function __construct(){
+        $this->helper = $this->loadHelper('autologoff');
+    }
 
     /**
      * Registers a callback function for a given event
@@ -39,7 +45,7 @@ class action_plugin_autologoff extends DokuWiki_Action_Plugin {
         global $ID;
         global $JSINFO;
 
-        $time = $this->usertime();
+        $time = $this->helper->usertime();
         if(!$time) return;
 
         // check if the time has expired meanwhile
@@ -70,7 +76,7 @@ class action_plugin_autologoff extends DokuWiki_Action_Plugin {
 
         header('Content-Type: text/plain');
 
-        $time = $this->usertime();
+        $time = $this->helper->usertime();
         if(!$time){
             echo 0;
             exit;
@@ -84,17 +90,6 @@ class action_plugin_autologoff extends DokuWiki_Action_Plugin {
         }
 
         echo(($time * 60) - (time() - $_SESSION[DOKU_COOKIE]['autologoff']));
-    }
-
-    /**
-     * Returns the configured time for the current user (in minutes)
-     *
-     * @return int
-     */
-    private function usertime(){
-        if(!$_SERVER['REMOTE_USER']) return 0;
-
-        return 3; //FIXME read from config
     }
 }
 

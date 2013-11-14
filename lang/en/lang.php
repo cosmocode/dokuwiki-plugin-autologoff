@@ -10,6 +10,14 @@ $lang['menu'] = 'Automatic Log-Off Configuration';
 
 $lang['loggedoff'] = '%s has been logged off automatically';
 
+$lang['addentry'] = 'Add Entry';
+$lang['usergroup'] = 'User/Group';
+$lang['time'] = 'Time (min)';
+$lang['save'] = 'Add Entry';
+$lang['mintime'] = 'Times have to be at least 2 minutes or 0 to disable the autologout. The specified time has been adjusted.';
+$lang['remove'] = 'remove';
+
+
 $lang['js']['title'] = 'Automatic Log-Off';
 $lang['js']['warn']  = 'You\'ve been inactive for a while. You will be automatically logged off in about a minute.';
 $lang['js']['stillhere'] = 'No, I\'m still here!';
