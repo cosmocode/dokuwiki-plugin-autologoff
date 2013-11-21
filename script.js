@@ -1,7 +1,14 @@
 jQuery(function () {
     if (!JSINFO.autologoff) return;
 
-    window.setTimeout(autologoff_check, (JSINFO.autologoff - 1) * 60 * 1000);
+    var autologofftimer = window.setTimeout(autologoff_check, (JSINFO.autologoff - 1) * 60 * 1000);
+    var autologoffrefresh = Date.now();
+
+    jQuery('body').keypress(function(){
+        if((Date.now() - autologoffrefresh) < 60*1000) return;
+        autologoffrefresh = Date.now();
+        autologoff_refresh();
+    });
 
 
     function autologoff_check() {
@@ -10,6 +17,9 @@ jQuery(function () {
             {call: 'autologoff'},
             function (timeremains) {
                 if (timeremains <= 0) {
+                    // remove any onunload handlers
+                    window.onbeforeunload = function(){};
+                    window.onunload = function(){};
                     // log off
                     window.location.reload();
                 } else {
@@ -22,10 +32,7 @@ jQuery(function () {
 
                         var buttons = {};
                         buttons[LANG.plugins.autologoff.stillhere] = function () {
-                            jQuery.post(DOKU_BASE + 'lib/exe/ajax.php',
-                                {call: 'autologoff', refresh: 1}
-                            );
-
+                            autologoff_refresh();
                             jQuery(this).dialog('close');
                         };
 
@@ -38,10 +45,21 @@ jQuery(function () {
                         timeremains = 60;
                     }
 
-                    window.setTimeout(autologoff_check, timeremains * 1000);
+                    window.clearTimeout(autologofftimer);
+                    autologofftimer = window.setTimeout(autologoff_check, timeremains * 1000);
                 }
             }
         );
-
     }
+
+    function autologoff_refresh() {
+        jQuery.post(DOKU_BASE + 'lib/exe/ajax.php',
+            {call: 'autologoff', refresh: 1},
+            function(timeremains){
+                window.clearTimeout(autologofftimer);
+                autologofftimer = window.setTimeout(autologoff_check, (timeremains - 60) * 1000);
+            }
+        );
+    }
+
 });
