@@ -1,6 +1,6 @@
 base   autologoff
 author Andreas Gohr
-email  andi@splitbrain.org
+email  gohr@cosmocode.de
 date   2013-11-21
 name   autologoff plugin
 desc   Automatically log out users after a defined period of inactivity

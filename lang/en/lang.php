@@ -2,7 +2,7 @@
 /**
  * English language file for autologoff plugin
  *
- * @author Andreas Gohr <andi@splitbrain.org>
+ * @author Andreas Gohr <gohr@cosmocode.de>
  */
 
 // menu entry for admin plugins
