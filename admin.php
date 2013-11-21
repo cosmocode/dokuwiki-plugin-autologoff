@@ -14,7 +14,7 @@ class admin_plugin_autologoff extends DokuWiki_Admin_Plugin {
     private $helper;
 
     public function __construct(){
-        $this->helper = $this->loadHelper('autologoff');
+        $this->helper = $this->loadHelper('autologoff', false);
     }
 
 

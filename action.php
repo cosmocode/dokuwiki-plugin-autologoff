@@ -14,7 +14,7 @@ class action_plugin_autologoff extends DokuWiki_Action_Plugin {
     private $helper;
 
     public function __construct(){
-        $this->helper = $this->loadHelper('autologoff');
+        $this->helper = $this->loadHelper('autologoff', false);
     }
 
     /**
