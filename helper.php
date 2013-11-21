@@ -67,13 +67,21 @@ class helper_plugin_autologoff extends DokuWiki_Plugin {
      */
     public function usertime() {
         global $INFO;
+        global $auth;
         if(!$_SERVER['REMOTE_USER']) return 0;
 
-        $config = $this->load_config();
+        // make sure we have group info on the current user
+        if(isset($INFO) && isset($INFO['userinfo'])){
+            $groups = $INFO['userinfo']['grps'];
+        }else{
+            $info = $auth->getUserData($_SERVER['REMOTE_USER']);
+            $groups = $info['grps'];
+        }
 
+        $config = $this->load_config();
         $maxtime = 0;
         foreach($config as $usergroup => $time) {
-            if(!auth_isMember($usergroup, $_SERVER['REMOTE_USER'], $INFO['userinfo']['grps'])) continue;
+            if(!auth_isMember($usergroup, $_SERVER['REMOTE_USER'], (array) $groups)) continue;
             if($time == 0) return 0;
             if($time > $maxtime) $maxtime = $time;
         }
