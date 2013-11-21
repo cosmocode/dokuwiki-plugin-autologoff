@@ -1,5 +1,10 @@
+// For IE8 and earlier version.
+// http://afuchs.tumblr.com/post/23550124774/date-now-in-ie8
+Date.now = Date.now || function() { return +new Date; };
+
 jQuery(function () {
     if (!JSINFO.autologoff) return;
+
 
     var autologofftimer = window.setTimeout(autologoff_check, (JSINFO.autologoff - 1) * 60 * 1000);
     var autologoffrefresh = Date.now();
@@ -9,7 +14,6 @@ jQuery(function () {
         autologoffrefresh = Date.now();
         autologoff_refresh();
     });
-
 
     function autologoff_check() {
 
