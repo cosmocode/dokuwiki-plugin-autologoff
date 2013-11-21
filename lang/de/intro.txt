@@ -1,0 +1,3 @@
+====== Automatischen Abmelden konfigurieren ======
+
+Hier können Sie Nutzer und Gruppen konfigurieren die nach der angegebenen Zeit automatisch abgemeldet werden sollen. Gruppennamen muss ein ''@'' vorangestellt werden. Nutzer die Mitglieder in mehreren der konfigurierten Gruppen sind erhalten die höhste konfigurierte Zeit. Sie können ''0'' angeben, um das automatische Abmelden für bestimmte Gruppen oder Nutzer zu deaktivieren.

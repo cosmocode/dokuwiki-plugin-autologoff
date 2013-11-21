@@ -10,7 +10,6 @@ $lang['menu'] = 'Automatic Log-Off Configuration';
 
 $lang['loggedoff'] = '%s has been logged off automatically';
 
-$lang['addentry'] = 'Add Entry';
 $lang['usergroup'] = 'User/Group';
 $lang['time'] = 'Time (min)';
 $lang['save'] = 'Add Entry';
