@@ -1,0 +1,2 @@
+====== Automatische Uitlog Configuratie ======
+Hier kun je gebruikers en groepen opgeven die na een vooraf bepaalde tijd van inactiviteit moet worden uitgelogd. Gebruik voor groepen de prefix "@". Een gebruiker die lid is van meerdere geconfigureerde groepen wordt uitgelogd na de langste tij. Je kunt "0" gebruiken om auto-uitoggen voor bepaalde groepen of gebruikers uit te schakelen.
