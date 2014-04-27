@@ -1,0 +1,3 @@
+====== Automatikus kijelentkeztetés beállítása ======
+
+Itt adhatjuk meg azokat a felhasználókat vagy csoportokat, akiket vagy amelyeket automatikusan szeretnénk kijelentkeztetni adott idejű inaktivitás után. A csoportokra az "@" előtaggal kell hivatkozni. Ha egy felhasználó több csoport tagja, akkor rá annak a csoportnak a beállítása fog vonatkozni, amelynél a  legnagyobb a megengedett inaktivitási idő. Az automatikus kijelentkeztetést letilthatjuk egy adott csoportnál vagy felhasználónál, ha "0"-át adunk meg az idő mezőben.
