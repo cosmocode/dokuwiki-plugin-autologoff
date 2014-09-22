@@ -1,0 +1,4 @@
+====== Nastavení automatického odhlašování ======
+
+Zde se dají určit skupiny a uživatelé, kteří mají být odhlášeni po určitém  čase, pokud nejsou aktivní. Ujistěte se, že jména skupin začínají znakem "@". Uživatel, který je členem několika skupin bude odhlášen po nejdelším možném časovém úseku. Vypnutí automatického odhlášování lze docílit zadáním času "0" u vybraného uživatele nebo skupiny.
+
