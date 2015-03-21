@@ -23,7 +23,7 @@ class action_plugin_autologoff extends DokuWiki_Action_Plugin {
      * @param Doku_Event_Handler $controller DokuWiki's event controller object
      * @return void
      */
-    public function register(Doku_Event_Handler &$controller) {
+    public function register(Doku_Event_Handler $controller) {
 
         $controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, 'handle_dokuwiki_started');
         $controller->register_hook('DETAIL_STARTED', 'BEFORE', $this, 'handle_dokuwiki_started');
