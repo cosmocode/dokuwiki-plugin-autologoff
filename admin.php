@@ -36,11 +36,11 @@ class admin_plugin_autologoff extends DokuWiki_Admin_Plugin {
      * Should carry out any processing required by the plugin.
      */
     public function handle() {
-        if(isset($_REQUEST['remove'])){
+        if(isset($_REQUEST['remove']) && checkSecurityToken()){
             $this->helper->remove_entry($_REQUEST['remove']);
         }
 
-        if(isset($_REQUEST['usergroup'])){
+        if(isset($_REQUEST['usergroup']) && checkSecurityToken()){
             $this->helper->add_entry($_REQUEST['usergroup'], $_REQUEST['time']);
         }
 
@@ -58,6 +58,7 @@ class admin_plugin_autologoff extends DokuWiki_Admin_Plugin {
         echo '<form action="'.script().'" method="post">';
         echo '<input type="hidden" name="do" value="admin" />';
         echo '<input type="hidden" name="page" value="autologoff" />';
+        echo '<input type="hidden" name="sectok" value="'.getSecurityToken().'" />';
 
         echo '<table class="inline">';
         echo '<tr>';
