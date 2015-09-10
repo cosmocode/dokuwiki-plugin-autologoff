@@ -72,7 +72,8 @@ class admin_plugin_autologoff extends DokuWiki_Admin_Plugin {
             $url = wl('',array(
                               'do' => 'admin',
                               'page' => 'autologoff',
-                              'remove' => $usergroup
+                              'remove' => $usergroup,
+                              'sectok' => getSecurityToken()
                          ));
 
             echo '<tr>';
