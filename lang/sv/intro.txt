@@ -1,0 +1,3 @@
+====== Inställningar för automatiskt utloggning ======
+
+Här kan di specificera användare och grupper som ska loggas ut efter vald tidsspann av inaktivitet. Var noga att ge grupper prefix "@". En användare som tillhör flera valda grupper kommer att ges den högst valda tidsangivelsen. Du kan välja "0" för att avaktivera auto-utloggning för vissa grupper eller användare.
