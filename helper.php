@@ -39,7 +39,7 @@ class helper_plugin_autologoff extends DokuWiki_Plugin {
      */
     public function add_entry($usergroup, $time) {
         $time = (int) $time;
-        if ($usergroup == '' || $time == '') {
+        if ($usergroup == '') {
             msg($this->getLang('groupCannotBeEmpty'), -1);
             return;
         }
