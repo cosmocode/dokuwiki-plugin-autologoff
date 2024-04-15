@@ -52,7 +52,7 @@ class action_plugin_autologoff extends DokuWiki_Action_Plugin {
         if(isset($_SESSION[DOKU_COOKIE]['autologoff'])) {
             /** @var int $idle_time */
             $idle_time = time() - $_SESSION[DOKU_COOKIE]['autologoff'];
-            if( $idle_time > $time * 60) {
+            if( $idle_time >= $time * 60) {
                 msg(sprintf($this->getLang('loggedoff'), hsc($_SERVER['REMOTE_USER'])));
                 unset($_SESSION[DOKU_COOKIE]['autologoff']);
                 $event = new Doku_Event('ACTION_AUTH_AUTOLOGOUT', $idle_time);
