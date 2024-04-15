@@ -1,7 +1,7 @@
 base   autologoff
 author Andreas Gohr
 email  dokuwiki@cosmocode.de
-date   2017-02-08
+date   2024-04-15
 name   autologoff plugin
 desc   Automatically log out users after a defined period of inactivity
 url    http://www.dokuwiki.org/plugin:autologoff
