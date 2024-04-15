@@ -39,6 +39,10 @@ class helper_plugin_autologoff extends DokuWiki_Plugin {
      */
     public function add_entry($usergroup, $time) {
         $time = (int) $time;
+        if ($usergroup == '') {
+            msg($this->getLang('groupCannotBeEmpty'), -1);
+            return;
+        }
         if($time !== 0 && $time < 2) {
             msg($this->getLang('mintime'), -1);
             $time = 2;
@@ -68,7 +72,7 @@ class helper_plugin_autologoff extends DokuWiki_Plugin {
     public function usertime() {
         global $INFO;
         global $auth;
-        if(!$_SERVER['REMOTE_USER']) return 0;
+        if(!isset($_SERVER['REMOTE_USER'])) return 0;
 
         // make sure we have group info on the current user
         if(isset($INFO) && isset($INFO['userinfo'])){

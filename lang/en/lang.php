@@ -14,6 +14,7 @@ $lang['usergroup'] = 'User/Group';
 $lang['time'] = 'Time (min)';
 $lang['save'] = 'Add Entry';
 $lang['mintime'] = 'Times have to be at least 2 minutes or 0 to disable the autologout. The specified time has been adjusted.';
+$lang['groupCannotBeEmpty'] = 'User/Group cannot be empty';
 $lang['remove'] = 'remove';
 
 
