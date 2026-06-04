@@ -1,0 +1,3 @@
+====== Konfigurácia automatického odhlásenia ======
+
+Tu môžete určiť používateľov a skupiny, ktorí majú byť po nastavenom čase nečinnosti odhlásení. Skupiny nezabudnite uvádzať s prefixom ''@''. Používateľovi, ktorý je členom viacerých nastavených skupín, sa použije najdlhší nastavený čas. Zadaním ''0'' môžete automatické odhlásenie pre určité skupiny alebo používateľov vypnúť.
